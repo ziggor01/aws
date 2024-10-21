@@ -152,7 +152,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "main_instance" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
-  key_name      = "dz-test"
+  key_name      = "key-dz"
 
   network_interface {
     network_interface_id = aws_network_interface.name.id
