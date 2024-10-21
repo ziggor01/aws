@@ -1,7 +1,13 @@
 variable "group_name" {
-  description = "value"
+  description = "Groupe name"
   type        = string
-  default     = "test"
+  default     = "test-groupe-name"
+}
+
+variable "aws_region" {
+  description = "AWS region"
+  type = string
+  default = "eu-central-1"
 }
 
 variable "environment_name" {
@@ -25,4 +31,9 @@ variable "subnets_number" {
     "Development" = "0"
     "Prodaction"  = "1"
   }
+}
+
+variable "s3_bucket_dz" {
+  description = "S3_BUCKET"
+  type = string
 }

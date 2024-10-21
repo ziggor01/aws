@@ -1,6 +1,6 @@
 provider "aws" {
   # Configuration options
-  region     = "eu-central-1"
+  region     = var.aws_region
   profile = "test-user"
 }
 
@@ -20,6 +20,7 @@ resource "aws_vpc" "main" {
   }
 }
 
+#Create Security Group defoult
 resource "aws_default_security_group" "defoult_sg" {
   vpc_id = aws_vpc.main.id
 
@@ -46,6 +47,7 @@ resource "aws_default_security_group" "defoult_sg" {
 
 }
 
+#Create Gateway
 resource "aws_internet_gateway" "main_ig" {
   vpc_id = aws_vpc.main.id
 
@@ -55,6 +57,7 @@ resource "aws_internet_gateway" "main_ig" {
   }
 }
 
+#Create Route
 resource "aws_route_table" "name" {
   vpc_id = aws_vpc.main.id
   route {
@@ -68,6 +71,7 @@ resource "aws_route_table" "name" {
   }
 }
 
+#Create Subnet
 resource "aws_subnet" "main" {
   count                   = length(var.environment_name)
   vpc_id                  = aws_vpc.main.id
@@ -86,6 +90,7 @@ resource "aws_route_table_association" "main_rta" {
   route_table_id = aws_route_table.name.id
 }
 
+#Create Security Group MAIN
 resource "aws_security_group" "main_sg" {
   name        = "${local.basic_name_prefix} Security Group"
   description = "Security group for main resources"
@@ -170,4 +175,14 @@ resource "aws_instance" "main_instance" {
   }
 
   depends_on = [aws_network_interface.name]
+}
+
+resource "aws_s3_bucket" "s3_main" {
+  bucket = var.s3_bucket_dz
+  
+  
+  tags = {
+    "Name"  = "Default ${local.basic_name_prefix} s3 bucket"
+    "Group" = var.group_name
+  }
 }
