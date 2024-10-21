@@ -10,7 +10,7 @@ locals {
 
 #Create VPC
 resource "aws_vpc" "main" {
-  cidr_block           = "10.0.0.0/16"
+  cidr_block           = var.vpc
   enable_dns_support   = true
   enable_dns_hostnames = true
 
@@ -154,7 +154,7 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-resource "aws_instance" "main_instance" {
+resource "aws_instance" "main_instance_web" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
   key_name      = "key-dz"

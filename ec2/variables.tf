@@ -16,6 +16,11 @@ variable "environment_name" {
   default     = ["Development", "Prodaction"]
 }
 
+variable "vpc" {
+  description = "CIDR block for the VPC"
+  default     = "10.0.0.0/16"
+}
+
 variable "subnets" {
   description = "List of subnets"
   type        = map(any)
