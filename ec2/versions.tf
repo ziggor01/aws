@@ -8,7 +8,7 @@ terraform {
     }
     #Провайдер HCP Vault
     vault = {
-      source = "hashicorp/vault"
+      source  = "hashicorp/vault"
       version = ">=4.3.0"
     }
   }

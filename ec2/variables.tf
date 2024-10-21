@@ -6,8 +6,8 @@ variable "group_name" {
 
 variable "aws_region" {
   description = "AWS region"
-  type = string
-  default = "eu-central-1"
+  type        = string
+  default     = "eu-central-1"
 }
 
 variable "environment_name" {
@@ -40,5 +40,5 @@ variable "subnets_number" {
 
 variable "s3_bucket_dz" {
   description = "S3_BUCKET"
-  type = string
+  type        = string
 }
