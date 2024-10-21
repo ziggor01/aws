@@ -38,7 +38,8 @@ variable "subnets_number" {
   }
 }
 
-variable "s3_bucket_dz" {
+variable "s3_b" {
   description = "S3_BUCKET"
   type        = string
+  default     = "s3_bucket_dz"
 }

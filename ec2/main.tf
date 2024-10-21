@@ -178,11 +178,5 @@ resource "aws_instance" "main_instance_web" {
 }
 
 resource "aws_s3_bucket" "s3_main" {
-  bucket = var.s3_bucket_dz
-
-
-  tags = {
-    "Name"  = "Default ${local.basic_name_prefix} s3 bucket"
-    "Group" = var.group_name
-  }
+  bucket = var.s3_b
 }
