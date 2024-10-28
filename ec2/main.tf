@@ -11,6 +11,7 @@ locals {
 #Create VPC
 resource "aws_vpc" "main" {
   cidr_block           = var.vpc
+  
   enable_dns_support   = true
   enable_dns_hostnames = true
 
@@ -177,6 +178,6 @@ resource "aws_instance" "main_instance_web" {
   depends_on = [aws_network_interface.name]
 }
 
-resource "aws_s3_bucket" "s3_main" {
-  bucket = var.s3_b
-}
+#resource "aws_s3_bucket" "s3_main" {
+#  bucket = "test_bucket"
+#}

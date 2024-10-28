@@ -1,9 +1,9 @@
 terraform {
   backend "s3" {
-    bucket = var.s3_b
-    key    = "path/to/my/key"
-    region = var.aws.region
-    dynamodb_table = "value"
+    bucket = "test-bucket-dz-courses"
+    key    = "./terraform.tfstate"
+    region = "eu-central-1"
+    #dynamodb_table = "value"
     encrypt = true
   }
 }
